@@ -35,7 +35,6 @@ Mood Tracker is a simple web application that allows users to log their daily mo
 
 ## 🚀 Deployment
 - The app is deployed on Vercel: [Live Demo](https://track-mood.vercel.app/)
-- To deploy manually, use any static site hosting service like Netlify, GitHub Pages, or Vercel.
 
 
 ---
