@@ -2,11 +2,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const moodDate = document.querySelector("#mood-date");
   const moodBtn = document.querySelectorAll(".mood-btn");
   const saveBtn = document.querySelector("#save-mood");
+
   //history
   const filter = document.querySelector("#filter");
   const moodHistory = document.querySelector("#mood-history");
 
+  //calendar
+  const prevMonthBtn = document.getElementById("prev-month");
+  const nextMonthBtn = document.getElementById("next-month");
+  const currentMonthDisplay = document.getElementById("current-month");
+  const calendar = document.getElementById("calendar");
+
   let selectedMood = null;
+  let currentDate = new Date();
 
   //select Mood Emoji
   moodBtn.forEach((btn) => {
@@ -73,6 +81,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function displayCalendar() {
+    const moods = JSON.parse(localStorage.getItem("moods")) || {};
+    calendar.innerHTML = "";
+    //display current Month
+    currentMonthDisplay.textContent = currentDate.toLocaleString("default", {
+      month: "long",
+      year: "numeric",
+    });
+
+    let daysInMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    ).getDate();
+
+    for (let i = 1; i < daysInMonth; i++) {
+      let day = i.toString();
+      let date = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}-${day.padStart(2, "0")}`;
+
+      let mood = moods[date] || "⬜";
+      let div = document.createElement("div");
+      div.innerHTML = `<span class='text-xs'>${day}</span><br>${mood}`;
+      div.classList.add(
+        "w-10",
+        "h-10",
+        "flex",
+        "flex-col",
+        "items-center",
+        "justify-center",
+        "border",
+        "rounded"
+      );
+      calendar.appendChild(div);
+    }
+  }
+
+  prevMonthBtn.addEventListener("click", function () {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    displayCalendar();
+  });
+
+  nextMonthBtn.addEventListener("click", function () {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    displayCalendar();
+  });
+
   filter.addEventListener("change", displayHistory);
   displayHistory();
+  displayCalendar();
 });
