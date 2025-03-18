@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
   //select Mood Emoji
   moodBtn.forEach((btn) => {
     btn.addEventListener("click", function () {
+      // Remove border from all buttons
+      moodBtn.forEach((b) =>
+        b.classList.remove("border-2", "border-black-500", "p-1", "rounded-xl")
+      );
+
+      // Add border to the selected button
+      this.classList.add("border-2", "border-black-500", "p-1", "rounded-xl");
       selectedMood = this.getAttribute("data-mood");
     });
   });
