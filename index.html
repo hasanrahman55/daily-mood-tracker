@@ -6,47 +6,96 @@
     <title>Mood Tracker</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-100 min-h-screen">
-    <div class="bg-white p-6 rounded-lg shadow-md max-w-md">
-      <h1 class="text-xl font-bold mb-4">Mood Tracker</h1>
-      <input
-        type="date"
-        id="mood-date"
-        class="mb-4 p-2 border rounded w-full"
-      />
-      <div id="mood-option text-3xl">
-        <button class="mood-btn" data-mood="😊">😊</button>
-        <button class="mood-btn" data-mood="😢">😢</button>
-        <button class="mood-btn" data-mood="😐">😐</button>
-        <button class="mood-btn" data-mood="🤩">🤩</button>
-      </div>
-
-      <button
-        id="save-mood"
-        class="bg-blue-500 text-white py-2 px-4 rounded w-full"
+  <body
+    class="bg-gradient-to-r from-blue-50 to-purple-100 min-h-screen flex justify-center items-center p-6"
+  >
+    <div class="max-w-[1200px] w-full grid md:grid-cols-3 gap-8">
+      <!-- Calendar View -->
+      <div
+        class="md:col-span-2 md:max-h-[80vh] bg-white p-8 rounded-xl shadow-lg"
       >
-        Save Mood
-      </button>
-    </div>
-
-    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md mt-6">
-      <h2 class="text-lg font-semibold mb-4">Mood History</h2>
-      <select id="filter" class="mb-4 p-2 border rounded w-full">
-        <option value="day">Daily</option>
-        <option value="week">Weekly</option>
-        <option value="month">Monthly</option>
-      </select>
-      <ul id="mood-history" class="space-y-2 text-center"></ul>
-    </div>
-
-    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md mt-6">
-      <h2 class="text-lg font-semibold mb-4">Calendar View</h2>
-      <div class="flex justify-between items-center mb-4">
-        <button id="prev-month" class="bg-gray-300 px-2 py-1 rounded">◀</button>
-        <span id="current-month" class="text-lg font-semibold"></span>
-        <button id="next-month" class="bg-gray-300 px-2 py-1 rounded">▶</button>
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Calendar View</h2>
+        <div class="flex justify-between items-center mb-6">
+          <button
+            id="prev-month"
+            class="bg-gray-200 px-3 py-2 rounded-lg shadow hover:bg-gray-300"
+          >
+            ◀
+          </button>
+          <span
+            id="current-month"
+            class="text-xl font-bold text-gray-800"
+          ></span>
+          <button
+            id="next-month"
+            class="bg-gray-200 px-3 py-2 rounded-lg shadow hover:bg-gray-300"
+          >
+            ▶
+          </button>
+        </div>
+        <div id="calendar" class="grid grid-cols-7 gap-2"></div>
       </div>
-      <div id="calendar" class="grid grid-cols-7 gap-2"></div>
+
+      <!-- Mood Tracker -->
+      <div class="space-y-6">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h1 class="text-2xl font-bold mb-4 text-gray-700">Mood Tracker</h1>
+          <input
+            type="date"
+            id="mood-date"
+            class="mb-4 p-3 border rounded-lg w-full shadow-md focus:ring-2 focus:ring-blue-400"
+          />
+          <div id="mood-option" class="flex justify-between text-4xl space-x-4">
+            <button
+              class="mood-btn hover:scale-110 transition-transform"
+              data-mood="😊"
+            >
+              😊
+            </button>
+            <button
+              class="mood-btn hover:scale-110 transition-transform"
+              data-mood="😢"
+            >
+              😢
+            </button>
+            <button
+              class="mood-btn hover:scale-110 transition-transform"
+              data-mood="😐"
+            >
+              😐
+            </button>
+            <button
+              class="mood-btn hover:scale-110 transition-transform"
+              data-mood="🤩"
+            >
+              🤩
+            </button>
+          </div>
+          <button
+            id="save-mood"
+            class="bg-blue-500 text-white py-3 px-6 rounded-lg w-full mt-4 shadow-lg hover:bg-blue-600"
+          >
+            Save Mood
+          </button>
+        </div>
+
+        <!-- Mood History -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h2 class="text-xl font-semibold mb-4 text-gray-700">Mood History</h2>
+          <select
+            id="filter"
+            class="mb-4 p-3 border rounded-lg w-full shadow-md focus:ring-2 focus:ring-blue-400"
+          >
+            <option value="day">Daily</option>
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
+          </select>
+          <ul
+            id="mood-history"
+            class="space-y-2 text-center text-gray-600"
+          ></ul>
+        </div>
+      </div>
     </div>
   </body>
   <script src="script.js"></script>

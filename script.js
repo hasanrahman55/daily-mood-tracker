@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     moods[selectedDate] = selectedMood;
     //save in local Storage
     localStorage.setItem("moods", JSON.stringify(moods));
+    displayHistory();
+    displayCalendar();
   });
 
   //filter and Display History
@@ -102,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .toString()
         .padStart(2, "0")}-${day.padStart(2, "0")}`;
 
-      let mood = moods[date] || "⬜";
+      let mood = moods[date] || "";
       let div = document.createElement("div");
-      div.innerHTML = `<span class='text-xs'>${day}</span><br>${mood}`;
+      div.innerHTML = `<span class='text-xs mb-1'>${day}</span>${mood}`;
       div.classList.add(
-        "w-10",
-        "h-10",
+        "w-15",
+        "p-3",
         "flex",
         "flex-col",
         "items-center",
