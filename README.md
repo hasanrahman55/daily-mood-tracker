@@ -25,11 +25,11 @@ Mood Tracker is a simple web application that allows users to log their daily mo
 ## 🔧 Setup & Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/mood-tracker.git
+   git clone https://github.com/yourusername/daily-mood-tracker.git
    ```
 2. Navigate to the project folder:
    ```sh
-   cd mood-tracker
+   cd daily-mood-tracker
    ```
 3. Open `index.html` in your browser or use a local development server.
 
