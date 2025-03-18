@@ -4,18 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Mood Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <input type="date" name="date" id="date" />
-    <select name="emoji" id="emoji">
-      <option value="happy">happy</option>
-      <option value="sad">sad</option>
-      <option value="neutral">neutral</option>
-    </select>
+  <body class="bg-gray-100 min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-md">
+      <h1 class="text-xl font-bold mb-4">Daily Mood Tracker</h1>
+      <input
+        type="date"
+        id="mood-date"
+        class="mb-4 p-2 border rounded w-full"
+      />
+      <div id="mood-option text-3xl">
+        <button class="mood-btn" data-mood="😊">😊</button>
+        <button class="mood-btn" data-mood="😢">😢</button>
+        <button class="mood-btn" data-mood="😐">😐</button>
+        <button class="mood-btn" data-mood="🤩">🤩</button>
+      </div>
 
-    <button id="add">Add</button>
-
-    <ul id="ul"></ul>
+      <button
+        id="save-mood"
+        class="bg-blue-500 text-white py-2 px-4 rounded w-full"
+      >
+        Save Mood
+      </button>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
