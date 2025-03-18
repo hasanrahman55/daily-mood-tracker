@@ -47,6 +47,32 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("moods", JSON.stringify(moods));
     displayHistory();
     displayCalendar();
+
+    // Show success message
+    const successMessage = document.createElement("div");
+    successMessage.textContent = "Mood saved successfully!";
+    successMessage.classList.add(
+      "text-green-600",
+      "font-semibold",
+      "text-center",
+      "mt-2"
+    );
+
+    saveBtn.parentElement.appendChild(successMessage);
+
+    // Remove message after 3 seconds
+    setTimeout(() => {
+      successMessage.remove();
+    }, 3000);
+
+    // Clear date input
+    moodDate.value = "";
+
+    // Clear selected mood
+    moodBtn.forEach((b) =>
+      b.classList.remove("border-2", "border-black-500", "p-1", "rounded-xl")
+    );
+    selectedMood = null;
   });
 
   //filter and Display History
